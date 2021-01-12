@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu(fileName = "LevelMap")]
 public class levelMap : ScriptableObject
 {
+    public int biomIndex;
+
     public int[] ScenesIndex;
     public int menuIndex;
 

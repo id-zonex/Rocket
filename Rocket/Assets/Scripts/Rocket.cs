@@ -134,6 +134,12 @@ public class Rocket : MonoBehaviour {
 		//print(nextLevelIndex);
 		if (nextLevelIndex == levelMap.sceneCount)
 		{
+			var maxBiomIndex = PlayerPrefs.GetInt("maxBiomIndex");
+			if (maxBiomIndex == levelMap.biomIndex)
+            {
+				print(maxBiomIndex);
+				PlayerPrefs.SetInt("maxBiomIndex", maxBiomIndex + 1);
+            }
 			SceneManager.LoadSceneAsync(levelMap.menuIndex); // цикл 
 			print("load main menu");
 		}

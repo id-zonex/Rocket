@@ -16,13 +16,11 @@ public class menuControl : MonoBehaviour {
 
 	void Start ()
 	{
-		if (PlayerPrefs.GetInt("currentMenu") == SceneManager.GetActiveScene().buildIndex)
-        {
-		}
-		else
+		if (!(PlayerPrefs.GetInt("currentMenu") == SceneManager.GetActiveScene().buildIndex))
         {
 			SceneManager.LoadSceneAsync(PlayerPrefs.GetInt("currentMenu"));
 		}
+
 		Time.timeScale = 1;
 		audioSource = GetComponent<AudioSource>();
 		_rigidbody = GetComponent<Rigidbody>();
