@@ -34,7 +34,6 @@ public class LoadMainMenu : MonoBehaviour
     private void UnLockBiomPanel()
     {
         var maxUnlockBiomIndex = PlayerPrefs.GetInt("maxBiomIndex");
-        print(maxUnlockBiomIndex);
         if (levelMap.biomIndex <= maxUnlockBiomIndex)
         {
             playButton.SetActive(true);

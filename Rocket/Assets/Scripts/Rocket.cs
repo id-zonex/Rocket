@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Rocket : MonoBehaviour {
 
+	[SerializeField] int levelIndex;
 	[SerializeField] levelMap levelMap;
 	[SerializeField] float rotSpeed = 100f;
 	[SerializeField] float flySpeed = 100f;
@@ -29,15 +30,21 @@ public class Rocket : MonoBehaviour {
 	public enum State {Playing,Dead, NextLevel};
 	public State state = State.Playing;
 
-	// Use this for initialization
+	//Main
+	//--------------------------------------------------------------------------------------------------
+
 	void Start () {
 		Time.timeScale = 1;
+		if (PlayerPrefs.GetInt("currentMenu") != levelMap.menuIndex)
+        {
+			PlayerPrefs.SetInt("currentMenu", levelMap.menuIndex);
+        }
 		state = State.Playing;
 		rigidBody = GetComponent<Rigidbody>();
 		audioSource = GetComponent<AudioSource>();
 	}
 	
-	// Update is called once per frame
+
 	void Update () {
 		if(state == State.Playing){
 		Launch();
@@ -88,6 +95,7 @@ public class Rocket : MonoBehaviour {
 		}
 	}
 
+	//--------------------------------------------------------------------------------------------------
 
 	void Lose()
 	{
@@ -122,6 +130,8 @@ public class Rocket : MonoBehaviour {
 		DeathMenu.SetActive(true);
 	}
 
+	// Scene loader
+	//--------------------------------------------------------------------------------------------------
 
 	public void LoadNextLevel() // Finish
 	{
@@ -132,21 +142,32 @@ public class Rocket : MonoBehaviour {
 		//print(SceneManager.GetActiveScene().buildIndex);
 		//print(currentLevelIndex);
 		//print(nextLevelIndex);
+
+		//Load MainMenu
 		if (nextLevelIndex == levelMap.sceneCount)
 		{
 			var maxBiomIndex = PlayerPrefs.GetInt("maxBiomIndex");
 			if (maxBiomIndex == levelMap.biomIndex)
             {
-				print(maxBiomIndex);
 				PlayerPrefs.SetInt("maxBiomIndex", maxBiomIndex + 1);
-            }
-			SceneManager.LoadSceneAsync(levelMap.menuIndex); // цикл 
+				PlayerPrefs.SetInt("maxUnlockLevelIndex", PlayerPrefs.GetInt("maxUnlockLevelIndex") + 1);
+			}
+			SceneManager.LoadSceneAsync(levelMap.menuIndex);
 			print("load main menu");
 		}
+		//Load Next Level
         else
         {
+			var maxUnlockLevelIndex = PlayerPrefs.GetInt("maxUnlockLevelIndex");
+			print(maxUnlockLevelIndex);
+			if (maxUnlockLevelIndex == levelIndex)
+			{
+				print(maxUnlockLevelIndex);
+				PlayerPrefs.SetInt("maxUnlockLevelIndex", maxUnlockLevelIndex + 1);
+			}
 			SceneManager.LoadSceneAsync(levelMap.ScenesIndex[nextLevelIndex]);
 			print("load first level");
+
 		}
 	}
 
@@ -160,6 +181,13 @@ public class Rocket : MonoBehaviour {
 		SceneManager.LoadSceneAsync(levelMap.menuIndex);
 	}
 
+	public void Restart()
+    {
+		SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+	}
+
+	// Mobile Controler
+	//--------------------------------------------------------------------------------------------------
 
     public void OnLaunchButtonSpatus(bool isLaunchButtonStatus)
     {
@@ -183,20 +211,23 @@ public class Rocket : MonoBehaviour {
 		isRightButtonDown = false;
 	}
 
-
+	//Mover
+	//---------------------------------------------------------------------------------------------
 
 	void Launch()
-	{
+	{    
+		//          PC			       |         Mobile
 		if(Input.GetKey(KeyCode.Space) || isLaunchButtonDown)
 		{
 			rigidBody.AddRelativeForce(Vector3.up * flySpeed * Time.deltaTime);
 			if(audioSource.isPlaying == false)
-			audioSource.PlayOneShot(flySound);
+			audioSource.PlayOneShot(flySound);//Play Sound And Particles
 		}
 		else
 		{
+			//Stop Sound And Particles
 			audioSource.Pause();
-			flyPartiles.Play();
+			flyPartiles.Play();// Костылььььььь!!!!!
 		}
 		
 	}
@@ -205,16 +236,21 @@ public class Rocket : MonoBehaviour {
 	{
 
 		float rotationSpeed = rotSpeed * Time.deltaTime;
-
+        
+		// отменяет возможность поворота от других обектов
 		rigidBody.freezeRotation = true;
-		if(Input.GetKey(KeyCode.A) || isLeftButtonDown)
+
+		//          PC			    |         Mobile
+		if (Input.GetKey(KeyCode.A) || isLeftButtonDown)
 		{
 			transform.Rotate(Vector3.forward * rotationSpeed);
 		}
-		else if(Input.GetKey(KeyCode.D) || isRightButtonDown)
+		//          PC			          |         Mobile
+		else if (Input.GetKey(KeyCode.D) || isRightButtonDown)
 		{
 			transform.Rotate(-Vector3.forward * rotationSpeed);
 		}
+		// позволяет впащение
 		rigidBody.freezeRotation = false;
 	}
 }

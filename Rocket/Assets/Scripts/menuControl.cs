@@ -18,7 +18,7 @@ public class menuControl : MonoBehaviour {
 	{
 		if (!(PlayerPrefs.GetInt("currentMenu") == SceneManager.GetActiveScene().buildIndex))
         {
-			SceneManager.LoadSceneAsync(PlayerPrefs.GetInt("currentMenu"));
+			SceneManager.LoadScene(PlayerPrefs.GetInt("currentMenu"));
 		}
 
 		Time.timeScale = 1;

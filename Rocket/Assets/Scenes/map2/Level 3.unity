@@ -1523,6 +1523,11 @@ PrefabInstance:
       propertyPath: DeathMenu
       value: 
       objectReference: {fileID: 1594469749}
+    - target: {fileID: 114013222152210042, guid: d8149aa680b2f4ee3a556c7033437763,
+        type: 3}
+      propertyPath: levelIndex
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8149aa680b2f4ee3a556c7033437763, type: 3}
 --- !u!114 &1220612634 stripped
@@ -2063,7 +2068,7 @@ PrefabInstance:
     - target: {fileID: 2344337126903457373, guid: c7ba0352f56c8b14e87791b73b49874c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadFirstLevel
+      value: Restart
       objectReference: {fileID: 0}
     - target: {fileID: 2344337127283750757, guid: c7ba0352f56c8b14e87791b73b49874c,
         type: 3}
@@ -2920,7 +2925,7 @@ PrefabInstance:
     - target: {fileID: 1774381096965570887, guid: 3ea1e9910b226994297d237225389bf7,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadFirstLevel
+      value: Restart
       objectReference: {fileID: 0}
     - target: {fileID: 1774381096970569284, guid: 3ea1e9910b226994297d237225389bf7,
         type: 3}
@@ -3079,7 +3084,7 @@ PrefabInstance:
     - target: {fileID: 5155606483068942062, guid: 7528baac0972fea4db248a9930730d41,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadFirstLevel
+      value: Restart
       objectReference: {fileID: 0}
     - target: {fileID: 5155606483372828839, guid: 7528baac0972fea4db248a9930730d41,
         type: 3}
