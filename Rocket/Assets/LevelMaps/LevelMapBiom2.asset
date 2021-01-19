@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e80eba11876964180254652596b921, type: 3}
   m_Name: LevelMapBiom2
   m_EditorClassIdentifier: 
-  ScenesIndex: 010000000200000003000000040000000500000006000000
-  menuScene: 0
+  biomIndex: 0
+  ScenesIndex: 020000000300000004000000050000000600000007000000
+  menuIndex: 1

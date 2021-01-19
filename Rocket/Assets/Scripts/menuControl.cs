@@ -16,10 +16,16 @@ public class menuControl : MonoBehaviour {
 
 	void Start ()
 	{
+
 		if (!(PlayerPrefs.GetInt("currentMenu") == SceneManager.GetActiveScene().buildIndex))
         {
 			SceneManager.LoadScene(PlayerPrefs.GetInt("currentMenu"));
 		}
+		if (PlayerPrefs.GetInt("maxUnlockLevelIndex") == 0)
+        {
+			PlayerPrefs.SetInt("maxUnlockLevelIndex", 1);
+        }
+
 
 		Time.timeScale = 1;
 		audioSource = GetComponent<AudioSource>();

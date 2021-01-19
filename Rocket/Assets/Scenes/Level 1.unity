@@ -2884,6 +2884,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadMainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 1774381096912832125, guid: 3ea1e9910b226994297d237225389bf7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1774381096965570887, guid: 3ea1e9910b226994297d237225389bf7,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -2903,6 +2908,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DeathMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774381096970569284, guid: 3ea1e9910b226994297d237225389bf7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1774381096970569304, guid: 3ea1e9910b226994297d237225389bf7,
         type: 3}
@@ -3232,6 +3242,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadMainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 5155606482864902511, guid: 7528baac0972fea4db248a9930730d41,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5155606482942904596, guid: 7528baac0972fea4db248a9930730d41,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3256,6 +3271,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WinMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155606483372828839, guid: 7528baac0972fea4db248a9930730d41,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5155606483372828859, guid: 7528baac0972fea4db248a9930730d41,
         type: 3}

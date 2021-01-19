@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class selectLevelControler : MonoBehaviour
 {
@@ -16,5 +17,10 @@ public class selectLevelControler : MonoBehaviour
         {
             scrollbar.SetActive(true);
         }
+    }
+
+    public void LoadHome()
+    {
+        SceneManager.LoadScene(0);
     }
 } 
