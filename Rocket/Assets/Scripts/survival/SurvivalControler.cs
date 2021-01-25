@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Events;
 
 public class SurvivalControler : MonoBehaviour
 {
@@ -17,8 +18,11 @@ public class SurvivalControler : MonoBehaviour
 
     [SerializeField] Chunk FIRST_ElEMENT;
 
+    [SerializeField] UnityEventScoreText scoreEvent;
+
     private List<Chunk> spawnedChunks = new List<Chunk>();
     private Chunk lastChunk;
+    public static int score;
 
     private enum State
     {
@@ -52,7 +56,6 @@ public class SurvivalControler : MonoBehaviour
     {
         Chunk newChunk = null;
         int randInt = Random.Range(0, 100);
-        print(randInt);
 
         if (randInt < chanceSpawnHorizontalCrossing)
         {
@@ -70,6 +73,7 @@ public class SurvivalControler : MonoBehaviour
 
         if (spawnedChunks.Count > 10)
         {
+            AddScore();
             DelChunk();
         }
     }
@@ -78,7 +82,6 @@ public class SurvivalControler : MonoBehaviour
     {
         Chunk newChunk = null;
         int randInt = Random.Range(0, 100);
-        print(randInt);
 
         if (randInt < chanceSpawnVertIcalCrossing)
         {
@@ -94,8 +97,9 @@ public class SurvivalControler : MonoBehaviour
 
         SpawnChunk(newChunk);
 
-        if (spawnedChunks.Count > 10)
+        if (spawnedChunks.Count > 6)
         {
+            AddScore();
             DelChunk();
         }
     }
@@ -118,4 +122,13 @@ public class SurvivalControler : MonoBehaviour
         spawnedChunks.RemoveAt(0);
         spawnedChunks[0].Wall.SetActive(true);
     }
+
+    void AddScore()
+    {
+        score += 1;
+        scoreEvent.Invoke(score.ToString());
+    }
+
 }
+[System.Serializable] 
+public class UnityEventScoreText : UnityEvent<string> { }
