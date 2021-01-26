@@ -17,12 +17,12 @@ public class SurvivalControler : MonoBehaviour
     [SerializeField] [Range(0, 100)] int chanceSpawnHorizontalCrossing;
 
     [SerializeField] Chunk FIRST_ElEMENT;
-
     [SerializeField] UnityEventScoreText scoreEvent;
 
     private List<Chunk> spawnedChunks = new List<Chunk>();
     private Chunk lastChunk;
     public static int score;
+    private bool isRecordChanged;
 
     private enum State
     {
@@ -126,9 +126,24 @@ public class SurvivalControler : MonoBehaviour
     void AddScore()
     {
         score += 1;
-        scoreEvent.Invoke(score.ToString());
+        ChangeRecord();
+        print(score);
     }
 
+    void ChangeRecord()
+    {
+        if (!isRecordChanged)
+        {
+            var currentRecordScore = PlayerPrefs.GetInt("currentRecordScore");
+            if (score > currentRecordScore)
+            {
+                PlayerPrefs.SetInt("currentRecordScore", score);
+                isRecordChanged = true;
+                print(currentRecordScore);
+            }
+        }
+    }
+    [System.Serializable]
+    public class UnityEventScoreText : UnityEvent<string> { }
 }
-[System.Serializable] 
-public class UnityEventScoreText : UnityEvent<string> { }
+

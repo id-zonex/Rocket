@@ -33,29 +33,34 @@ public class Rocket : MonoBehaviour {
 	//Main
 	//--------------------------------------------------------------------------------------------------
 
-	void Start () {
+	void Start () 
+	{
 		Time.timeScale = 1;
 		if (PlayerPrefs.GetInt("currentMenu") != levelMap.menuIndex)
         {
 			PlayerPrefs.SetInt("currentMenu", levelMap.menuIndex);
         }
+
 		state = State.Playing;
 		rigidBody = GetComponent<Rigidbody>();
 		audioSource = GetComponent<AudioSource>();
 	}
 	
 
-	void Update () {
-		if(state == State.Playing){
-		Launch();
-		Rotation();
+	void Update ()
+	{
+		if(state == State.Playing)
+		{
+			Launch();
+			Rotation();
 		}
-		if(Debug.isDebugBuild){
-		DebugKeys();
+
+		if(Debug.isDebugBuild)
+		{
+			DebugKeys();
 		}
 
 	}
-
 
 	void DebugKeys()
 	{
@@ -99,22 +104,22 @@ public class Rocket : MonoBehaviour {
 
 	void Lose()
 	{
-				state = State.Dead;
-				print("RocketBoom!");
-				audioSource.Stop();
-				audioSource.PlayOneShot(boomSound);
-				boomPartiles.Play();
-				Invoke("Death", 1);
+		state = State.Dead;
+		print("RocketBoom!");
+		audioSource.Stop();
+		audioSource.PlayOneShot(boomSound);
+		boomPartiles.Play();
+		Invoke("Death", 1);
 	}
 
 
 	void Finish()
 	{
-				state = State.NextLevel;
-				audioSource.Stop();
-				audioSource.PlayOneShot(finishSound);
-				finishPartiles.Play();
-				Invoke("Win", 1);
+		state = State.NextLevel;
+		audioSource.Stop();
+		audioSource.PlayOneShot(finishSound);
+		finishPartiles.Play();
+		Invoke("Win", 1);
 	}
 	 void Win()
      {
@@ -214,14 +219,14 @@ public class Rocket : MonoBehaviour {
 	//Mover
 	//---------------------------------------------------------------------------------------------
 
-	void Launch()
-	{    
+	public void Launch()
+	{
 		//          PC			       |         Mobile
-		if(Input.GetKey(KeyCode.Space) || isLaunchButtonDown)
+		if (Input.GetKey(KeyCode.Space) || isLaunchButtonDown)
 		{
 			rigidBody.AddRelativeForce(Vector3.up * flySpeed * Time.deltaTime);
-			if(audioSource.isPlaying == false)
-			audioSource.PlayOneShot(flySound);//Play Sound And Particles
+			if (audioSource.isPlaying == false)
+				audioSource.PlayOneShot(flySound);//Play Sound And Particles
 		}
 		else
 		{
@@ -229,14 +234,14 @@ public class Rocket : MonoBehaviour {
 			audioSource.Pause();
 			flyPartiles.Play();// Костылььььььь!!!!!
 		}
-		
+
 	}
 
-	void Rotation()
+	public void Rotation()
 	{
 
 		float rotationSpeed = rotSpeed * Time.deltaTime;
-        
+
 		// отменяет возможность поворота от других обектов
 		rigidBody.freezeRotation = true;
 
@@ -253,4 +258,5 @@ public class Rocket : MonoBehaviour {
 		// позволяет впащение
 		rigidBody.freezeRotation = false;
 	}
+
 }
