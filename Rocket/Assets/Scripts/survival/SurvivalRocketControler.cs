@@ -12,7 +12,6 @@ public class SurvivalRocketControler : MonoBehaviour
 	[SerializeField] ParticleSystem flyPartiles;
 	[SerializeField] ParticleSystem boomPartiles;
 	[SerializeField] UnityEvent deathEvent;
-	[SerializeField] UnityEventScoreText scoreEvent;
 
 	bool collisionOff = false;
 	Rigidbody rigidBody;

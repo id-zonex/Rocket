@@ -10,4 +10,9 @@ public class LoadScene : MonoBehaviour
     {
         SceneManager.LoadScene(index);
     }
+
+    public void Reset()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }

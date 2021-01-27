@@ -31,7 +31,6 @@ public class Paused : MonoBehaviour
         {
             if (isPause)
             {
-                print("lol");
                 Time.timeScale = 0;
                 Panel.SetActive(true);
             }

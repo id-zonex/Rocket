@@ -17,7 +17,8 @@ public class SurvivalControler : MonoBehaviour
     [SerializeField] [Range(0, 100)] int chanceSpawnHorizontalCrossing;
 
     [SerializeField] Chunk FIRST_ElEMENT;
-    [SerializeField] UnityEventScoreText scoreEvent;
+    [SerializeField] UnityEvent scoreEvent;
+    [SerializeField] UnityEvent newRecordEvent;
 
     private List<Chunk> spawnedChunks = new List<Chunk>();
     private Chunk lastChunk;
@@ -127,7 +128,7 @@ public class SurvivalControler : MonoBehaviour
     {
         score += 1;
         ChangeRecord();
-        print(score);
+        scoreEvent.Invoke();
     }
 
     void ChangeRecord()
@@ -140,6 +141,7 @@ public class SurvivalControler : MonoBehaviour
                 PlayerPrefs.SetInt("currentRecordScore", score);
                 isRecordChanged = true;
                 print(currentRecordScore);
+                newRecordEvent.Invoke();
             }
         }
     }
