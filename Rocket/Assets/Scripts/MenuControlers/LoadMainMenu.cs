@@ -21,14 +21,8 @@ public class LoadMainMenu : MonoBehaviour
 
         PlayerPrefs.SetInt("currentMenu", levelMap.menuIndex);
         PlayerPrefs.Save();
-        if (currentMenu == levelMap.menuIndex)
-        {
-            SceneManager.LoadSceneAsync(levelMap.firstLevelIndex);
-        }
-        else
-        {
-            SceneManager.LoadSceneAsync(levelMap.menuIndex);
-        }
+
+        SceneManager.LoadSceneAsync(levelMap.menuIndex);
     }
 
     private void UnLockBiomPanel()

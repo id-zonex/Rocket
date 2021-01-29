@@ -81,6 +81,20 @@ public class SurvivalRocketControler : MonoBehaviour
 		}
 	}
 
+	void OnTriggerEnter (Collider collider)
+	{
+		switch (collider.gameObject.tag)
+		{
+			case "Coin":
+				PickUpCoin(collider);
+				break;
+			default:
+				Lose();
+				break;
+		}
+	}
+
+
 	//--------------------------------------------------------------------------------------------------
 
 	void Lose()
@@ -167,6 +181,16 @@ public class SurvivalRocketControler : MonoBehaviour
 		// позволяет впащение
 		rigidBody.freezeRotation = false;
 	}
+
+	void PickUpCoin(Collider coin)
+    {
+		var coins = PlayerPrefs.GetInt("Coins");
+
+		Destroy(coin.gameObject);
+		PlayerPrefs.SetInt("Coins", coins + 1);
+		print($"coins: {PlayerPrefs.GetInt("Coins")}");
+    }
+
 	[System.Serializable]
 	public class UnityEventScoreText : UnityEvent<string> { }
 }
