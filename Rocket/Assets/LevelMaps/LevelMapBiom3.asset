@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: LevelMapBiom3
   m_EditorClassIdentifier: 
   biomIndex: 1
-  ScenesIndex: 090000000a0000000b0000000c000000
+  ScenesIndex: 090000000a0000000b0000000c0000000e000000
   menuIndex: 8

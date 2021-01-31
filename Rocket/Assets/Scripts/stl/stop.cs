@@ -13,7 +13,7 @@ public class stop : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Untagged")
         {
             _rigidbody.isKinematic = true;
         }

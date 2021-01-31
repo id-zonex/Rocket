@@ -182,5 +182,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 4014544731008036726}
-  forse: 2500
+  forse: 3.5
   time: 0.5

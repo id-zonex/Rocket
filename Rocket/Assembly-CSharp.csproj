@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\CameraScripts\CameraControlerHorizontal.cs" />
      <Compile Include="Assets\Scripts\CameraScripts\UniversalCameraControler.cs" />
      <Compile Include="Assets\Scripts\DestroyObject.cs" />
+     <Compile Include="Assets\Scripts\MenuControlers\DeathAndWinMenuControler.cs" />
      <Compile Include="Assets\Scripts\MenuControlers\LoadLevel.cs" />
      <Compile Include="Assets\Scripts\MenuControlers\LoadMainMenu.cs" />
      <Compile Include="Assets\Scripts\MenuControlers\Paused.cs" />

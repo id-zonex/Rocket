@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class Rocket : MonoBehaviour {
 
@@ -15,8 +15,8 @@ public class Rocket : MonoBehaviour {
 	[SerializeField] ParticleSystem flyPartiles;
 	[SerializeField] ParticleSystem boomPartiles;
 	[SerializeField] ParticleSystem finishPartiles;
-	[SerializeField] GameObject WinMenu;
-	[SerializeField] GameObject DeathMenu;
+	[SerializeField] UnityEvent WinMenu;
+	[SerializeField] UnityEvent DeathMenu;
 
 	bool collisionOff = false;
 	Rigidbody rigidBody;
@@ -125,14 +125,14 @@ public class Rocket : MonoBehaviour {
      {
 		audioSource.Stop();
 		finishPartiles.Stop();
-		WinMenu.SetActive(true);
+		WinMenu.Invoke();
      }
 
 	void Death()
     {
 		audioSource.Stop();
 		finishPartiles.Stop();
-		DeathMenu.SetActive(true);
+		DeathMenu.Invoke();
 	}
 
 	// Scene loader

@@ -109,7 +109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 184d840edf53ff543a0288380c90cd35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CountToLeave: 0
   EndPos: {fileID: 6898751915722943597}
   MiddlePos: {fileID: 794818996840013751}
   StartPos: {fileID: 2553607505166827600}

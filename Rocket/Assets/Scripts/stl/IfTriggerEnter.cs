@@ -7,16 +7,7 @@ public class IfTriggerEnter : MonoBehaviour
     public Rigidbody _rigidbody;
     public float forse;
     [SerializeField] float time;
-    void Start()
-    {
-        
-    }
 
-
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -31,6 +22,6 @@ public class IfTriggerEnter : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         _rigidbody.isKinematic = false;
-        _rigidbody.AddRelativeForce(Vector3.down * forse * Time.deltaTime, ForceMode.Impulse);
+        _rigidbody.AddRelativeForce(Vector3.down * forse, ForceMode.VelocityChange);
     }
 }
