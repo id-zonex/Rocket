@@ -10,7 +10,6 @@ public class DeathAndWinMenuControler : MonoBehaviour
 
 	public int levelIndex;
 
-
 	public void ShowWinMenu()
     {
 		WinMenu.SetActive(true);

@@ -17,17 +17,8 @@ public class LoadLevel : MonoBehaviour
         UnLockPanelOfLevel();
     }
 
-
-    void Update()
-    {
-        
-    }
     public void LoadThisLevel()
     {
-        for (int i = 0; i < levelMap.ScenesIndex.Length; i++)
-        {
-            
-        }
         print(levelMap.ScenesIndex[indexInLevelMap]);
         SceneManager.LoadScene(levelMap.ScenesIndex[indexInLevelMap]);
     }

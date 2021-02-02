@@ -90,9 +90,6 @@ public class Rocket : MonoBehaviour {
 			case "Finish":
 				Finish();
 				break;
-			case "Battery":
-				//PlusEnergy(1000, collision.gameObject);
-				break;	
 			default:
 				Lose();
 				break;
@@ -142,13 +139,7 @@ public class Rocket : MonoBehaviour {
 	{
 		int currentLevelIndex = Array.IndexOf(levelMap.ScenesIndex, SceneManager.GetActiveScene().buildIndex);
 		int nextLevelIndex = currentLevelIndex + 1;
-		//print(levelMap.ScenesIndex[0]);
-		//print(levelMap.ScenesIndex[1]);
-		//print(SceneManager.GetActiveScene().buildIndex);
-		//print(currentLevelIndex);
-		//print(nextLevelIndex);
 
-		//Load MainMenu
 		if (nextLevelIndex == levelMap.sceneCount)
 		{
 			var maxBiomIndex = PlayerPrefs.GetInt("maxBiomIndex");
@@ -176,20 +167,6 @@ public class Rocket : MonoBehaviour {
 		}
 	}
 
-	public void LoadFirstLevel() // Lose
-	{
-		SceneManager.LoadSceneAsync(levelMap.firstLevelIndex);
-	}
-
-	public void LoadMainMenu()
-    {
-		SceneManager.LoadSceneAsync(levelMap.menuIndex);
-	}
-
-	public void Restart()
-    {
-		SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-	}
 
 	// Mobile Controler
 	//--------------------------------------------------------------------------------------------------

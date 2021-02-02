@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class SurvivalControler : MonoBehaviour
 {
+    public int maxChunksOnStage = 3;
     [SerializeField] Transform player;
     [SerializeField] Chunk[] chunksHorizontal;
     [SerializeField] Chunk[] ChunksVertical;
@@ -53,6 +54,7 @@ public class SurvivalControler : MonoBehaviour
         }
     }
 
+
     void VerticalSpawn()
     {
         Chunk newChunk = null;
@@ -72,12 +74,9 @@ public class SurvivalControler : MonoBehaviour
 
         SpawnChunk(newChunk);
 
-        if (spawnedChunks.Count > 10)
-        {
-            AddScore();
-            DelChunk();
-        }
+        TryDelChunkAndAddScore();
     }
+
 
     void HorizontalSpawn()
     {
@@ -98,12 +97,9 @@ public class SurvivalControler : MonoBehaviour
 
         SpawnChunk(newChunk);
 
-        if (spawnedChunks.Count > 6)
-        {
-            AddScore();
-            DelChunk();
-        }
+        TryDelChunkAndAddScore();
     }
+
 
     void SpawnChunk(Chunk newChunk)
     {
@@ -112,10 +108,22 @@ public class SurvivalControler : MonoBehaviour
         spawnedChunks.Add(newChunk);
     }
 
+
     Chunk GetRangomChunk(Chunk[] Chucks)
     {
         return Instantiate(Chucks[Random.Range(0, Chucks.Length)]);
     }
+
+
+    void TryDelChunkAndAddScore()
+    {
+        if (spawnedChunks.Count > maxChunksOnStage)
+        {
+            AddScore();
+            DelChunk();
+        }
+    }
+
 
     void DelChunk()
     {
@@ -124,12 +132,14 @@ public class SurvivalControler : MonoBehaviour
         spawnedChunks[0].Wall.SetActive(true);
     }
 
+
     void AddScore()
     {
         score += 1;
         ChangeRecord();
         scoreEvent.Invoke();
     }
+
 
     void ChangeRecord()
     {
@@ -145,6 +155,7 @@ public class SurvivalControler : MonoBehaviour
             }
         }
     }
+
     [System.Serializable]
     public class UnityEventScoreText : UnityEvent<string> { }
 }

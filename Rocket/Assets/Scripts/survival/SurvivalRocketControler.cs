@@ -88,9 +88,6 @@ public class SurvivalRocketControler : MonoBehaviour
 			case "Coin":
 				PickUpCoin(collider);
 				break;
-			default:
-				Lose();
-				break;
 		}
 	}
 
